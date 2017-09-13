@@ -156,7 +156,7 @@ students[i]=null;
 	public void removeFromElement(Student student) throws IllegalArgumentException {
 		// Add your implementation here
 		if(student==null)
-			throw new IllegalArgumentException;
+			throw new IllegalArgumentException();
 		for(int i=0;i<students.length;i++)
 		{
 		if(students[i]==student)
@@ -175,7 +175,7 @@ students[i]=null;
 		// Add your implementation here
 	 int b=0;
 		if(index<0 || index>=students.length)
-			throw new IllegalArgumentException;
+			throw new IllegalArgumentException();
 		for(int i=index+1;i<students.length;i++)
 		{
 		students[b++]=students[i];
