@@ -187,19 +187,62 @@ students[i]=null;
 	}
 
 	@Override
-	public void removeToElement(Student student) {
+	public void removeToElement(Student student)throws IllegalArgumentException{
 		// Add your implementation here
+		int b=0;
+		for(int i=0;i<students.length;i++)
+		{
+		if(students[i]==student)
+		{
+		for(int j=i+1;j<students.length;j++)
+		{
+			students[b++]=students[j];
+		}
+		
+		break;
+		}
+			
+		}
+		for(int i=b;i<students.length;i++)
+		{
+		students[i]=null;
+		}
 	}
 
 	@Override
 	public void bubbleSort() {
-		// Add your implementation here
+		Student s;
+		for(int i=0;i<students.length-1;i++)
+		{
+			for(int j=0;j<students.length-i-1;j++)
+			{
+				if(students[j].compareTo(students[j+1])>0){
+				s=students[j];
+				students[j]=students[j+1];
+				students[j+1]=s;
+        }
+        }
+        }
 	}
 
 	@Override
-	public Student[] getByBirthDate(Date date) {
+	public Student[] getByBirthDate(Date date) throws IllegalArgumentException {
 		// Add your implementation here
-		return null;
+		Student[] s1=new Student[students.length];
+		int c=0;
+		if(date==null)
+			throw new IllegalArgumentException();
+		else
+		{
+		Date d;
+		for(int i=0;i<students.length;i++)
+		{
+		d=students[i].getBirthDate();
+			if(d.before(date) || d.equals(date))
+				s1[c++]=students[i];
+		}
+		}
+		return s1;	
 	}
 
 	@Override
