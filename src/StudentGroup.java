@@ -80,11 +80,25 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void add(Student student, int index) {
 		// Add your implementation here
+        Student s1=students[index];
+        students[index]=student;
+        Student s2;
+
+         for(int i=index+1;i<students.length;i++)
+           {
+           s1=students[i];
+           students[i]=s;
+           s=s1;
+           
+           }
+
 	}
 
 	@Override
 	public void remove(int index) {
 		// Add your implementation here
+
+        
 	}
 
 	@Override
