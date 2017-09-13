@@ -10,6 +10,7 @@ public class Main {
                 Student[] s=new Student[10];
                 sg.setStudents(s);
                 sg.getStudents();
+		sg.addFirst(sg);
 
 	}
 
