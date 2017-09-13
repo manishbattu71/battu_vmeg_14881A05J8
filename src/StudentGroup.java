@@ -226,9 +226,9 @@ public class StudentGroup implements StudentArrayOperation {
 	public void bubbleSort() {
 		// Add your implementation here
 		
-		Arrays.sort(students);
-		//Student s12;
-		/*for(int i=0;i<students.length-1;i++)
+		//Arrays.sort(students);
+		Student s12;
+		for(int i=0;i<students.length-1;i++)
 		{
 			for(int j=0;j<students.length-i-1;j++)
 			{
@@ -238,7 +238,7 @@ public class StudentGroup implements StudentArrayOperation {
 				students[j+1]=s12;
 				}
 			}
-		}*/
+		}
 	}
 
 	@Override
