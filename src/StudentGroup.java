@@ -257,8 +257,10 @@ public class StudentGroup implements StudentArrayOperation {
 	}
 
 	@Override
-	public Student[] getBetweenBirthDates(Date firstDate, Date lastDate) {
+	public Student[] getBetweenBirthDates(Date firstDate, Date lastDate){
 		// Add your implementation here
+
+       
 		return null;
 	}
 
@@ -282,13 +284,43 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public Student[] getStudentsWithMaxAvgMark() {
-		// Add your implementation here
-		return null;
+/*		// Add your implementation here
+Student[] s1=new Student[students.length];
+for(int i=0;i<students.length;i++)
+{
+s1[i]=students[i].getAvgMark();
+}
+Student a=s1[0];
+
+for(int j=0;j<s1.length;j++)
+{
+if(a<s1[j])
+{
+a=s1[j];
+}
+
+}*/
+return null;
 	}
 
 	@Override
-	public Student getNextStudent(Student student) {
+	public Student getNextStudent(Student student)throws IllegalArgumentException{
 		// Add your implementation here
+		if(student==null)
+			throw new IllegalArgumentException();
+		else{
+		for(int i=0;i<students.length;i++)
+		{
+		if(students[i]==student)
+		{
+		
+		return students[i+1];
+		
+		
+		}	
+		}
+		}
+			
 		return null;
 	}
 }
