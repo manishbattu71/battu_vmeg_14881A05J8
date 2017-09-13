@@ -1,0 +1,16 @@
+public class Main {
+
+	public static void main(String[] args) {
+		
+		//You may test that your code works find here
+		//Please check that your code works and has no 
+		//compilation problems before to submit
+
+                StudentGroup sg = new StudentGroup(10);
+                Student[] s=new Student[10];
+                sg.setStudents(s);
+                sg.getStudents();
+
+	}
+
+}
