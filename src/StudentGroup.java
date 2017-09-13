@@ -1,4 +1,4 @@
-import java.util.Date;
+import java.util.*;
 
 /**
  * A fix-sized array of students
@@ -276,9 +276,22 @@ public class StudentGroup implements StudentArrayOperation {
 	}
 
 	@Override
-	public int getCurrentAgeByDate(int indexOfStudent) {
+	public int getCurrentAgeByDate(int indexOfStudent) throws IllegalArgumentException {
 		// Add your implementation here
-		return 0;
+		Calendar c= Calendar.getInstance();
+		Calendar c1 = Calendar.getInstance();
+		Date d=new Date();
+		if(indexOfStudent==0)
+			throw new IllegalArgumentException();
+		else{
+ 		//Calendar cal = Calendar.getInstance();
+                c.setTime(d);
+		c1.setTime(students[indexOfStudent].getBirthDate());
+                int year = c.get(Calendar.YEAR);
+		int year1 = c1.get(Calendar.YEAR);
+                 
+		return year-year1;
+		}
 	}
 
 	@Override
