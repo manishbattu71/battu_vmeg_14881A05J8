@@ -26,134 +26,140 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public Student[] getStudents() {
 		// Add your implementation here
-              if(students!=null)
-		return students;
-                    else
+		if(students!=null)
+			return students;
+		else
 			return null;
+	
+		
 	}
 
 	@Override
-	public void setStudents(Student[] students) throws IllegalArgumentException{
+	public void setStudents(Student[] students)throws IllegalArgumentException {
 		// Add your implementation here
-               if(students==null)
+		if(students==null)
 			throw new IllegalArgumentException();
-                   else
-                   this.students=students;
+		else
+			this.students=students;
 	}
 
 	@Override
 	public Student getStudent(int index) {
 		// Add your implementation here
+		if(index<0 || index>=students.length){
+			throw new IllegalArgumentException();
+		}
+		else{
 		return students[index];
+		}
+	//return null;
 	}
 
 	@Override
 	public void setStudent(Student student, int index)throws IllegalArgumentException {
 		// Add your implementation here
-if(index<0 || index>=students.length){
+		if(student==null || index<0 || index>=this.students.length)
 			throw new IllegalArgumentException();
+		else{
+			this.students[index]=student;
+			}
 		}
-else
-                 this.students[index]=student;
-	}
 
 	@Override
 	public void addFirst(Student student)throws IllegalArgumentException {
 		// Add your implementation here
-                    if(student==null)
+		if(student==null)
 			throw new IllegalArgumentException();
-                 Student s;
-                   s=students[0];
-                 students[0]=student;
-                 Student s1;
-
-               for(int i=1;i<students.length;i++)
-             {
-              s1=students[i];
-              students[i]=s;
-              s=s1;
-             }
-
+		Student s1=students[0];
+		students[0]=student;
+		Student s12;
+		for(int i=1;i<students.length;i++)
+		{
+		s12=students[i];
+		students[i]=s1;
+		s1=s12;
+		}
 	}
 
 	@Override
 	public void addLast(Student student)throws IllegalArgumentException {
 		// Add your implementation here
-                 if(student==null)
+		if(student==null)
 			throw new IllegalArgumentException();
-           for(int i=0;i<students.length;i++)
-           {
-              if(students[i]==null)
-              students[i]=student;
-
-           }
-	
-
-        }
-
-	@Override
-	public void add(Student student, int index) throws IllegalArgumentException{
-		// Add your implementation here
-               if(student==null || index<0 || index>=this.students.length)
-			throw new IllegalArgumentException();
-        Student s1=students[index];
-        students[index]=student;
-        Student s2;
-
-         for(int i=index+1;i<students.length;i++)
-           {
-           s2=students[i];
-           students[i]=s1;
-           s1=s2;
-           
-           }
-
+		for(int i=0;i<students.length;i++)
+		{
+		if(students[i]==null){
+		students[i]=student;
+		break;
+		}
+		}
 	}
 
 	@Override
-	public void remove(int index) throws IllegalArgumentException{
+	public void add(Student student, int index) {
 		// Add your implementation here
-              if(index<0 || index>=students.length)
+		if(student==null || index<0 || index>=this.students.length)
 			throw new IllegalArgumentException();
-             for(int i=index;i<students.length;i++)
-                   students[i]=students[i+1];
-
-        
+		Student s1=students[index];
+		students[index]=student;
+		Student s12;
+		for(int i=index+1;i<students.length;i++)
+		{
+		s12=students[i];
+		students[i]=s1;
+		s1=s12;
+		}
 	}
 
 	@Override
-	public void remove(Student student) {
+	public void remove(int index) {
 		// Add your implementation here
-            for(int i=0;i<students.length;i++)
-{
-                  if(students[i]==student)
-{
-      for(int j=i;j<students.length;j++)
-{
-    students[j]=students[j+1];
-}
-                
-}
-}
+		if(index<0 || index>=students.length)
+			throw new IllegalArgumentException();
+		for(int i=index;i<students.length-1;i++)
+		{
+			students[i]=students[i+1];
+		}
+	}
+
+	@Override
+	public void remove(Student student)throws IllegalArgumentException {
+		// Add your implementation here
+		int c=0;
+		if(student==null)
+			throw new IllegalArgumentException();
+		for(int i=0;i<students.length;i++)
+		{
+		if(students[i]==student)
+		{
+		for(int j=i;j<students.length-1;j++)
+		{
+			students[j]=students[j+1];
+		}
+		c++;
+		break;
+			
+		}
+		}
+		if(c==0)
+			throw new IllegalArgumentException("Student not exist");
 	}
 
 	@Override
 	public void removeFromIndex(int index)throws IllegalArgumentException {
 		// Add your implementation here
-            if(index<0 || index>=students.length)
-                throw new IllegalArgumentException();
-else{
-for(int i=index+1;i<students.length;i++)
-{
-students[i]=null;
-}
-
-
-}
+		if(index<0 || index>=students.length)
+			throw new IllegalArgumentException();
+		else{
+			for(int i=index+1;i<students.length;i++)
+			{
+			students[i]=null;
+			}
+		}			
 	}
 
 	@Override
-	public void removeFromElement(Student student) throws IllegalArgumentException {
+	public void removeFromElement(Student student) throws IllegalArgumentException{
 		// Add your implementation here
 		if(student==null)
 			throw new IllegalArgumentException();
@@ -165,45 +171,49 @@ students[i]=null;
 		{
 			students[j]=null;
 		}
-	     }
-		}
 		
+		break;
+			
+		}
+		}
 	}
 
 	@Override
 	public void removeToIndex(int index) throws IllegalArgumentException{
 		// Add your implementation here
-	 int b=0;
+		int cv=0;
 		if(index<0 || index>=students.length)
 			throw new IllegalArgumentException();
 		for(int i=index+1;i<students.length;i++)
 		{
-		students[b++]=students[i];
+		students[cv++]=students[i];
 		}
-		for(int i=b;i<students.length;i++)
+		for(int i=cv;i<students.length;i++)
 		{
 		students[i]=null;
 		}
 	}
 
 	@Override
-	public void removeToElement(Student student)throws IllegalArgumentException{
+	public void removeToElement(Student student) {
 		// Add your implementation here
-		int b=0;
+		int c=0;
+		if(student==null)
+			throw new IllegalArgumentException();
 		for(int i=0;i<students.length;i++)
 		{
 		if(students[i]==student)
 		{
 		for(int j=i+1;j<students.length;j++)
 		{
-			students[b++]=students[j];
+			students[c++]=students[j];
 		}
 		
 		break;
 		}
 			
 		}
-		for(int i=b;i<students.length;i++)
+		for(int i=c;i<students.length;i++)
 		{
 		students[i]=null;
 		}
@@ -211,22 +221,23 @@ students[i]=null;
 
 	@Override
 	public void bubbleSort() {
-		Student s;
+		// Add your implementation here
+		Student s12;
 		for(int i=0;i<students.length-1;i++)
 		{
 			for(int j=0;j<students.length-i-1;j++)
 			{
 				if(students[j].compareTo(students[j+1])>0){
-				s=students[j];
+				s12=students[j];
 				students[j]=students[j+1];
-				students[j+1]=s;
-        }
-        }
-        }
+				students[j+1]=s12;
+				}
+			}
+		}
 	}
 
 	@Override
-	public Student[] getByBirthDate(Date date) throws IllegalArgumentException {
+	public Student[] getByBirthDate(Date date)throws IllegalArgumentException {
 		// Add your implementation here
 		Student[] s1=new Student[students.length];
 		int c=0;
